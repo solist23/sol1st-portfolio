@@ -1,27 +1,23 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Box } from '@react-three/drei';
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <Canvas>
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 5]} intensity={1} />
+        <Box args={[1, 1, 1]} position={[0, 0, 0]}>
+          <meshStandardMaterial color="hotpink" />
+        </Box>
+        <OrbitControls />
+      </Canvas>
+      <div style={{ position: 'absolute', top: '20px', left: '20px', color: 'white' }}>
+        <h1>Alexander Solovyov</h1>
+        <p>Senior Go Developer</p>
+      </div>
+    </div>
+  );
+}
 
 export default App;

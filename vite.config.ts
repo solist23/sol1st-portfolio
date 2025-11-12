@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/DIOLOG/",  // ← Это имя твоего репозитория
+  base: "/sol1st-portfolio/",  // ← Это имя твоего репозитория
   server: {
     host: "::",
     port: 8080,
